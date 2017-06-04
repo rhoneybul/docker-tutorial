@@ -8,7 +8,8 @@ class TestDockerapp(unittest.TestCase):
 
     def testIndex(self):
         response = self.app.get("/")
-        assert(str(response.data) == "Welcome to the API") 
+        response = response.data.decode('utf-8')
+        assert(str(response) == "Welcome to the API") 
     
     def testSquare(self):
         testCases = [1, 2, 3, 4, 5]
